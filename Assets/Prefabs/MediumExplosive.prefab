@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 747063454027760314}
   - component: {fileID: 6618619223396778571}
   m_Layer: 0
-  m_Name: PlayerExplosive
+  m_Name: MediumExplosive
   m_TagString: PlayerExplosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

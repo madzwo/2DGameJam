@@ -33,7 +33,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         rb.rotation += rotationAmount;
 
-        if (timeTillDrop < 0)
+        if (timeTillDrop < 0 && transform.position.x > -7f && transform.position.x < 7f)
         {
             explosive = Instantiate(explosivePrefab, dropPoint.position, dropPoint.rotation);
             timeTillDrop = dropRate;

@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Drone")
         {
             Explode();
         }
@@ -100,5 +100,6 @@ public class Player : MonoBehaviour
     public void Respawn()
     {
         transform.position = new Vector3(0f, 0f, transform.position.z);
+        transform.position = new Vector3(0f, 0f, 0f);
     }
 }

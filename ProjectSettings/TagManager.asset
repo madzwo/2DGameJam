@@ -10,6 +10,7 @@ TagManager:
   - EnemyExplosive
   - Explosion
   - DefuseArea
+  - Drone
   layers:
   - Default
   - TransparentFX

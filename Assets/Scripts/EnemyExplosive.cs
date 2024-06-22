@@ -11,7 +11,7 @@ public class EnemyExplosive : MonoBehaviour
 
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -23,7 +23,8 @@ public class EnemyExplosive : MonoBehaviour
         timeTillExplode -= Time.deltaTime;
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        if(distance < 5f && Input.GetKeyDown(KeyCode.F))
+        Debug.Log(distance);
+        if(distance < 2f && Input.GetKeyDown(KeyCode.F))
         {
             Destroy(gameObject);
         }
