@@ -12,6 +12,7 @@ TagManager:
   - DefuseArea
   - Drone
   - Drone2
+  - Bullet
   layers:
   - Default
   - TransparentFX

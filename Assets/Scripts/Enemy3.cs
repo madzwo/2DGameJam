@@ -64,7 +64,7 @@ public class Enemy3 : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "PlayerProjectile")
+        if(collision.gameObject.tag == "PlayerProjectile" || collision.gameObject.tag == "Bullet")
         {
             Explode();
         }
