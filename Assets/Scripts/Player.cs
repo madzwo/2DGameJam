@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private bool isMoving;
 
     public GameObject gun;
+    public GameObject missileGun;
     private Vector3 aimDirection;
     
     public GameObject explosivePrefab;
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, aimDirection);
         Vector3 eulerAngles = targetRotation.eulerAngles;
         gun.transform.rotation = Quaternion.Euler(0f, 0f, eulerAngles.z);
+        missileGun.transform.rotation = Quaternion.Euler(0f, 0f, eulerAngles.z);
 
         if (Input.GetKeyDown(KeyCode.Space) && (explosive == null))
         {
@@ -85,7 +87,7 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Drone")
+        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Drone2")
         {
             Explode();
         }
