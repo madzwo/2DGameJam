@@ -33,13 +33,15 @@ public class Enemy2 : MonoBehaviour
             timeTillExplode = explodeTime;
         }
         timeTillExplode -= Time.deltaTime;
+
+
     }
 
     
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerProjectile" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Player" )
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerProjectile" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
         {
             Explode();
         }

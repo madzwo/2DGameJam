@@ -471,6 +471,7 @@ MonoBehaviour:
   timeTillExplode: 10
   explosion: {fileID: 3198453258203578175, guid: 7e7df6f41b55b44c2b76948581d2e2c7, type: 3}
   player: {fileID: 6108806743887464384, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
+  timeText: {fileID: 3349605920988504535}
 --- !u!1 &7797955722274642955
 GameObject:
   m_ObjectHideFlags: 0

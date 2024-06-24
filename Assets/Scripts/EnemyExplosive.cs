@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyExplosive : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyExplosive : MonoBehaviour
 
     public GameObject player;
 
+    public TMP_Text timeText;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -16,24 +19,35 @@ public class EnemyExplosive : MonoBehaviour
 
     void Update()
     {
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        if(distance < 2f && Input.GetKeyDown(KeyCode.F))
+        {
+            Destroy(gameObject);
+        }
+
         if(timeTillExplode <= 0)
         {
             Explode();
         }
         timeTillExplode -= Time.deltaTime;
 
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
-        if(distance < 2f && Input.GetKeyDown(KeyCode.F))
-        {
-            Destroy(gameObject);
-        }
+        float roundedTime = Mathf.Ceil(timeTillExplode);
+        int displayTime = (int)roundedTime;
 
+        if(displayTime == 10)
+        {
+            timeText.text = ":10";
+
+        }
+        else
+        {
+            timeText.text = ":0" + displayTime;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Bullet")
         {
             Explode();
         }

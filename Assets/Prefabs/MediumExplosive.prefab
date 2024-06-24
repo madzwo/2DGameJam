@@ -469,6 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTillExplode: 3
   explosion: {fileID: 3198453258203578175, guid: 945049f43fa564e90bbe73b3855c247a, type: 3}
+  timeText: {fileID: 3349605920988504535}
 --- !u!1 &7797955722274642955
 GameObject:
   m_ObjectHideFlags: 0

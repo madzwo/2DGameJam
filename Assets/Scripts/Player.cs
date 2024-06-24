@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -34,6 +36,23 @@ public class Player : MonoBehaviour
     private float missileTimeTillFire;
 
     public ParticleSystem explosion;
+    public ParticleSystem smoke;
+
+
+    public float health;
+    private float maxHealth;
+
+    public Image healthBar;
+
+
+    public float time;
+    public TMP_Text timeText;
+
+    int mins;
+    int tens;
+    int ones;
+
+    public bool gameOver = false;
 
 
     void Start()
@@ -41,99 +60,147 @@ public class Player : MonoBehaviour
         bulletTimeTillFire = bulletFireRate;
         missileTimeTillFire = missileFireRate;
 
+        maxHealth = 1.0f;
+        health = maxHealth;
     }
 
     void Update()
     {
-        float speed = moveSpeed;
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(gameOver)
         {
-            speed *= 1.5f;
-            bigJet.Play();
-        } 
-        else
-        {
-            bigJet.Stop();
-        }
-        if(Input.GetKey(KeyCode.W))
-        {
-            Vector2 moveDirection = transform.up * speed;
-            rb.AddForce(moveDirection);
-            isMoving = true;
-            smallJet1.Play();
-            smallJet2.Play();
-        }
-        else if(Input.GetKey(KeyCode.S))
-        {
-            Vector2 moveDirection = -transform.up * speed;
-            rb.AddForce(moveDirection);
-            isMoving = true;
         }
         else
         {
-            isMoving = false;
-            smallJet1.Stop();
-            smallJet2.Stop();
-        }
+            UI();
 
-        if(isMoving)
-        {
-            if (Input.GetKey(KeyCode.A))
+            float speed = moveSpeed;
+            if(Input.GetKey(KeyCode.LeftShift))
             {
-                float rotationAmount = turnSpeed * Time.deltaTime;
-                rb.rotation += rotationAmount;
-            }
-            if (Input.GetKey(KeyCode.D))
+                speed *= 1.5f;
+                bigJet.Play();
+            } 
+            else
             {
-                float rotationAmount = turnSpeed * Time.deltaTime;
-                rb.rotation -= rotationAmount;
+                bigJet.Stop();
             }
-        }
+            if(Input.GetKey(KeyCode.W))
+            {
+                Vector2 moveDirection = transform.up * speed;
+                rb.AddForce(moveDirection);
+                isMoving = true;
+                smallJet1.Play();
+                smallJet2.Play();
+            }
+            else if(Input.GetKey(KeyCode.S))
+            {
+                Vector2 moveDirection = -transform.up * speed;
+                rb.AddForce(moveDirection);
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+                smallJet1.Stop();
+                smallJet2.Stop();
+            }
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        aimDirection = mousePosition - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, aimDirection);
-        Vector3 eulerAngles = targetRotation.eulerAngles;
-        gun.transform.rotation = Quaternion.Euler(0f, 0f, eulerAngles.z);
-        missileGun.transform.rotation = Quaternion.Euler(0f, 0f, eulerAngles.z);
+            if(isMoving)
+            {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    float rotationAmount = turnSpeed * Time.deltaTime;
+                    rb.rotation += rotationAmount;
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    float rotationAmount = turnSpeed * Time.deltaTime;
+                    rb.rotation -= rotationAmount;
+                }
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space) && (explosive == null))
-        {
-            explosive = Instantiate(explosivePrefab, dropPoint.position, dropPoint.rotation);
-        }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            aimDirection = mousePosition - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, aimDirection);
+            Vector3 eulerAngles = targetRotation.eulerAngles;
+            gun.transform.rotation = Quaternion.Euler(0f, 0f, eulerAngles.z);
+            missileGun.transform.rotation = Quaternion.Euler(0f, 0f, eulerAngles.z);
 
-        if (Input.GetMouseButtonDown(0) && (bulletTimeTillFire < 0f))
-        {
-            bullet = Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
-            bulletTimeTillFire = bulletFireRate;
-        }
-        bulletTimeTillFire -= Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Space) && (explosive == null))
+            {
+                explosive = Instantiate(explosivePrefab, dropPoint.position, dropPoint.rotation);
+            }
 
-        if (Input.GetMouseButtonDown(1) && (missileTimeTillFire < 0f))
-        {
-            missile = Instantiate(missilePrefab, missileFirePoint.position, missileFirePoint.rotation);
-            missileTimeTillFire = missileFireRate;
+            if (Input.GetMouseButtonDown(0) && (bulletTimeTillFire < 0f))
+            {
+                bullet = Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation);
+                bulletTimeTillFire = bulletFireRate;
+            }
+            bulletTimeTillFire -= Time.deltaTime;
+
+            if (Input.GetMouseButtonDown(1) && (missileTimeTillFire < 0f))
+            {
+                missile = Instantiate(missilePrefab, missileFirePoint.position, missileFirePoint.rotation);
+                missileTimeTillFire = missileFireRate;
+            }
+            missileTimeTillFire -= Time.deltaTime;
         }
-        missileTimeTillFire -= Time.deltaTime;
+        
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Drone2")
+        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "Drone2")
+        {
+            health -= 0.2f;
+        }
+        if(collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Enemy")
+        {
+            health -= 0.3f;
+        }
+        
+        if(health <= 0.1f)
         {
             Explode();
+            smoke.Play();
         }
+
     }
 
     public void Explode()
     {
+        healthBar.fillAmount = health / maxHealth;
         Instantiate(explosion, transform.position, transform.rotation);
-        Respawn();
+        gameOver = true;
     }
 
     public void Respawn()
     {
+        health = maxHealth;
         transform.position = new Vector3(0f, 0f, transform.position.z);
         transform.position = new Vector3(0f, 0f, 0f);
+    }
+
+    public void UI()
+    {
+        healthBar.fillAmount = health / maxHealth;
+
+        time += Time.deltaTime;
+        float roundedTime = Mathf.Floor(time);
+        int displayTime = (int)roundedTime;
+        
+
+        if(displayTime % 60 == 0)
+        {
+            mins = displayTime / 60;
+            tens = 0;
+            ones = 0;
+        }
+        if(displayTime % 10 == 0)
+        {
+            tens = (displayTime - (mins * 60)) / 10;
+        }
+        ones = displayTime % 10;
+
+        timeText.text = "" + mins + ":" + tens + "" + ones;
     }
 }

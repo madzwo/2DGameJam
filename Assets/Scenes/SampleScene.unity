@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 29020572}
   - component: {fileID: 29020571}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,18 +173,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 88c001c9624f64ed5a5b628d8349a94a, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 531490180}
   - component: {fileID: 531490179}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,8 +444,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -512,11 +512,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531490177}
   m_CullTransparentMesh: 1
---- !u!4 &812841670 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7793861107616798932, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-  m_PrefabInstance: {fileID: 3687247012629163735}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &897313807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,11 +1041,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
---- !u!4 &2013453809 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 729422059582069737, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-  m_PrefabInstance: {fileID: 3687247012629163735}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079332142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,22 +1137,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 138047795350035036, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341979488580858012, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.902
-      objectReference: {fileID: 0}
-    - target: {fileID: 3605564521820495574, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5106136564159471875, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 5545610376922361630, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1204,64 +1178,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: bullet
+      propertyPath: timeText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 531490179}
     - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: missile
+      propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 8631941230142377855, guid: cb55397a888834723a34133784d3ba29, type: 3}
-    - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: missilePrefab
-      value: 
-      objectReference: {fileID: 8631941230142377855, guid: 7a133c9cf526740b39d2e55852dd0d10, type: 3}
-    - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: bulletFireRate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: bulletFirePoint
-      value: 
-      objectReference: {fileID: 2013453809}
-    - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: missileFireRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: missileFirePoint
-      value: 
-      objectReference: {fileID: 812841670}
+      objectReference: {fileID: 29020571}
     - target: {fileID: 6108806743887464384, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464861109882772011, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464861109882772011, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464861109882772011, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8184101059806395930, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497915557817116027, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 8815269233726001559, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
