@@ -18,6 +18,8 @@ public class NewBehaviourScript : MonoBehaviour
     private float timeTillDrop;
     public GameObject explosive;
 
+    public GameObject metal;
+
 
 
     void Start()
@@ -59,6 +61,7 @@ public class NewBehaviourScript : MonoBehaviour
     public void Explode()
     {
         Instantiate(explosion, transform.position, transform.rotation);
+        Instantiate(metal, transform.position, transform.rotation);
         Respawn();
     }
 

@@ -24,6 +24,8 @@ public class Enemy5 : MonoBehaviour
 
     private bool stopped = false;
 
+    public GameObject metal;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -72,6 +74,7 @@ public class Enemy5 : MonoBehaviour
     public void Explode()
     {
         Instantiate(explosion, transform.position, transform.rotation);
+        Instantiate(metal, transform.position, transform.rotation);
         Respawn();
     }
 

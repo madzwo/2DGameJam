@@ -12,6 +12,8 @@ public class EnemyExplosive : MonoBehaviour
 
     public TMP_Text timeText;
 
+    public GameObject metal;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,6 +24,7 @@ public class EnemyExplosive : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if(distance < 2f && Input.GetKeyDown(KeyCode.F))
         {
+            Instantiate(metal, transform.position, transform.rotation);
             Destroy(gameObject);
         }
 

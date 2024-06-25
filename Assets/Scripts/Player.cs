@@ -52,6 +52,10 @@ public class Player : MonoBehaviour
 
     public bool gameOver = false;
 
+    private int metal;
+    public TMP_Text metalText;
+
+
 
     void Start()
     {
@@ -156,6 +160,11 @@ public class Player : MonoBehaviour
         {
             health -= 0.3f;
         }
+        if(tagName == "Metal")
+        {
+            Destroy(collision.gameObject);
+            metal += 1;
+        }
         
         if(health <= 0.1f)
         {
@@ -201,5 +210,8 @@ public class Player : MonoBehaviour
         ones = displayTime % 10;
 
         timeText.text = "" + mins + ":" + tens + "" + ones;
+
+        metalText.text = "" + metal;
+
     }
 }
