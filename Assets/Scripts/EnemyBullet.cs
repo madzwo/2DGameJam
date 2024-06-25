@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectile : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed;
@@ -33,7 +33,7 @@ public class PlayerProjectile : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         string tagName = collision.gameObject.tag;
-        if(tagName == "Explosion" || tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "Drone" || tagName == "Drone2" || tagName == "ArtilleryRover")
+        if(tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "Drone" || tagName == "Drone2" || tagName == "PlayerExplosive" || tagName == "EnemyExplosive")
         {
             Explode();
         }

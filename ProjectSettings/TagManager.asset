@@ -4,15 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
+  - BomberRover
+  - SuicideRover
+  - BomberDrone
+  - SuicideDrone
+  - ArtilleryRover
   - PlayerExplosive
-  - PlayerProjectile
+  - PlayerBullet
+  - PlayerMissile
   - EnemyExplosive
+  - EnemyBullet
   - Explosion
-  - DefuseArea
-  - Drone
-  - Drone2
-  - Bullet
   layers:
   - Default
   - TransparentFX

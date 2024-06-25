@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 1808895022755516511}
   m_Layer: 0
   m_Name: Enemy3
-  m_TagString: Drone
+  m_TagString: BomberDrone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -755,7 +755,7 @@ MonoBehaviour:
   explosivePrefab: {fileID: 6808501373794452338, guid: b4c7a249a7e2a4f839541779d9a9c905, type: 3}
   dropPoint: {fileID: 2086262927758327719}
   dropRate: 1
-  explosive: {fileID: 0}
+  explosive: {fileID: 6808501373794452338, guid: e03b03f79677846bb8f8c3ee99f98082, type: 3}
 --- !u!1 &6337945923200441025
 GameObject:
   m_ObjectHideFlags: 0

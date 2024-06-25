@@ -32,7 +32,8 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Drone" || collision.gameObject.tag == "Drone2")
+        string tagName = collision.gameObject.tag;
+        if(tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "BomberDrone" || tagName == "SuicideDrone" || tagName == "ArtilleryRover" || tagName == "PlayerExplosive" || tagName == "EnemyExplosive")
         {
             Explode();
         }

@@ -15,13 +15,15 @@ public class PlayerExplosive : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
-        Debug.Log(player.transform.rotation.z);
-        if(player.transform.rotation.z > .9f || player.transform.rotation.z < -.9f)
+        
+        if(this.gameObject.CompareTag("PlayerExplosive"))
         {
-            Quaternion currentRotation = transform.rotation;
-            Quaternion newRotation = currentRotation * Quaternion.Euler(0, 0, 180);
-            transform.rotation = newRotation;
+            if(player.transform.rotation.z > .9f || player.transform.rotation.z < -.9f)
+            {
+                Quaternion currentRotation = transform.rotation;
+                Quaternion newRotation = currentRotation * Quaternion.Euler(0, 0, 180);
+                transform.rotation = newRotation;
+            }
         }
     }
 
@@ -43,7 +45,8 @@ public class PlayerExplosive : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Bullet")
+        string tagName = collision.gameObject.tag;
+        if(tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "ArtilleryRover" || tagName == "Player" || tagName == "Explosion" || tagName == "PlayerBullet" || tagName == "PlayerMissile" || tagName == "EnemyBullet")
         {
             Explode();
         }

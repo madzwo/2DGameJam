@@ -38,12 +38,10 @@ public class Player : MonoBehaviour
     public ParticleSystem explosion;
     public ParticleSystem smoke;
 
-
     public float health;
     private float maxHealth;
 
     public Image healthBar;
-
 
     public float time;
     public TMP_Text timeText;
@@ -149,11 +147,12 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "PlayerExplosive" || collision.gameObject.tag == "Drone2")
+        string tagName = collision.gameObject.tag;
+        if(tagName == "Explosion" || tagName == "PlayerExplosive" || tagName == "SuicideDrone" || tagName == "EnemyBullet")
         {
             health -= 0.2f;
         }
-        if(collision.gameObject.tag == "EnemyExplosive" || collision.gameObject.tag == "Enemy")
+        if(tagName == "EnemyExplosive" || tagName == "BomberRover" || tagName == "SuicideRover")
         {
             health -= 0.3f;
         }

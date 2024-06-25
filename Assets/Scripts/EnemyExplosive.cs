@@ -47,7 +47,8 @@ public class EnemyExplosive : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Bullet")
+        string tagName = collision.gameObject.tag;
+        if(tagName == "SuicideRover" || tagName == "ArtilleryRover" || tagName == "Player" || tagName == "Explosion" || tagName == "PlayerBullet" || tagName == "PlayerMissile" || tagName == "EnemyBullet")
         {
             Explode();
         }
