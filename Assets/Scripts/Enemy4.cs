@@ -12,6 +12,7 @@ public class Enemy4 : MonoBehaviour
 
     public GameObject player;
 
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -29,13 +30,13 @@ public class Enemy4 : MonoBehaviour
         float rand = Random.Range(0.0f,2.0f);
         if(rand > 1.0f)
         {
-            float x = Random.Range(-60.0f,-75.0f);
+            float x = Random.Range(-80.0f,-85.0f);
             float y = Random.Range(-1.0f,1.0f);
             transform.position = new Vector3(x, y, transform.position.z);
         }
         else
         {
-            float x = Random.Range(60.0f,75.0f);
+            float x = Random.Range(80.0f,85.0f);
             float y = Random.Range(-1.0f,1.0f);
             transform.position = new Vector3(x, y, transform.position.z);
         }

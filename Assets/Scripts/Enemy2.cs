@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Enemy2 : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class Enemy2 : MonoBehaviour
     private float timeTillExplode;
     public ParticleSystem explosion;
 
+    public float maxStartDistance;
+    public float minStartDistance;
+
+    public TMP_Text timeText;
+
+
     void Start()
     {
         Respawn();
@@ -22,7 +29,7 @@ public class Enemy2 : MonoBehaviour
     {
         rb.velocity = moveDirection;
 
-        if(transform.position.x < -30.0f || transform.position.x > 30.0f)
+        if(transform.position.x < -maxStartDistance || transform.position.x > maxStartDistance)
         {
             Respawn();
         }
@@ -34,9 +41,11 @@ public class Enemy2 : MonoBehaviour
         }
         timeTillExplode -= Time.deltaTime;
 
+        float roundedTime = Mathf.Ceil(timeTillExplode);
+        int displayTime = (int)roundedTime;
+        timeText.text = ":0" + displayTime;
 
     }
-
     
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -59,7 +68,7 @@ public class Enemy2 : MonoBehaviour
         float rand = Random.Range(0.0f,2.0f);
         if(rand > 1.0f)
         {
-            float x = Random.Range(-25.0f,-30.0f);
+            float x = Random.Range(-minStartDistance,-maxStartDistance);
             float y = Random.Range(-1.5f,1.5f);
             transform.position = new Vector3(x, y, transform.position.z);
             float rot = Random.Range(-10.0f,10.0f);
@@ -69,7 +78,7 @@ public class Enemy2 : MonoBehaviour
         }
         else
         {
-            float x = Random.Range(25.0f,30.0f);
+            float x = Random.Range(minStartDistance,maxStartDistance);
             float y = Random.Range(-1.5f,1.5f);
             transform.position = new Vector3(x, y, transform.position.z);
             float rot = Random.Range(-10.0f,10.0f);

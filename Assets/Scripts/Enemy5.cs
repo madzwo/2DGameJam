@@ -82,11 +82,9 @@ public class Enemy5 : MonoBehaviour
     {
         stopped = false;
         float x = 0f;
-        float y = Random.Range(55.0f,65.0f);
+        float y = Random.Range(80.0f,85.0f);
         transform.position = new Vector3(x, y, transform.position.z);
-        float rot = Random.Range(-3.0f,3.0f);
-        float z = 180f + rot;
-        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, z);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180f);
     
 
         float turn = Random.Range(0.0f,2.0f);

@@ -20,6 +20,9 @@ public class NewBehaviourScript : MonoBehaviour
 
     public GameObject metal;
 
+    public float maxStartDistance;
+    public float minStartDistance;
+
 
 
     void Start()
@@ -42,7 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
         timeTillDrop -= Time.deltaTime;
 
-        if(transform.position.x < -15.0f || transform.position.x > 15.0f || transform.position.y < -10.0f || transform.position.y > 10.0f)
+        if(transform.position.x < -maxStartDistance || transform.position.x > maxStartDistance || transform.position.y < -8 || transform.position.y > 8)
         {
             Respawn();
         }
@@ -70,7 +73,7 @@ public class NewBehaviourScript : MonoBehaviour
         float rand = Random.Range(0.0f,2.0f);
         if(rand > 1.0f)
         {
-            float x = Random.Range(-9.0f,-11.0f);
+            float x = Random.Range(-minStartDistance, -maxStartDistance);
             float y = Random.Range(-3.0f,3.0f);
             transform.position = new Vector3(x, y, transform.position.z);
             float rot = Random.Range(-20.0f,20.0f);
@@ -80,7 +83,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else
         {
-            float x = Random.Range(9.0f,11.0f);
+            float x = Random.Range(minStartDistance, maxStartDistance);
             float y = Random.Range(-3.0f,3.0f);
             transform.position = new Vector3(x, y, transform.position.z);
             float rot = Random.Range(-20.0f,20.0f);

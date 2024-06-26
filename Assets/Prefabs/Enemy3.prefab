@@ -697,7 +697,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.016429663, y: -0.016427219}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -708,7 +708,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2299855, y: 1.3614105}
   m_EdgeRadius: 0
 --- !u!50 &5486061170652630916
 Rigidbody2D:
@@ -756,6 +756,9 @@ MonoBehaviour:
   dropPoint: {fileID: 2086262927758327719}
   dropRate: 1
   explosive: {fileID: 6808501373794452338, guid: e03b03f79677846bb8f8c3ee99f98082, type: 3}
+  metal: {fileID: 1994167956331101466, guid: eefa28af16a1e4cc2bb4f674b68b924d, type: 3}
+  maxStartDistance: 45
+  minStartDistance: 40
 --- !u!1 &6337945923200441025
 GameObject:
   m_ObjectHideFlags: 0

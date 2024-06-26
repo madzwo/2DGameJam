@@ -18,6 +18,9 @@ public class Enemy3 : MonoBehaviour
 
     public GameObject metal;
 
+    public float maxStartDistance;
+    public float minStartDistance;
+
 
     void Start()
     {
@@ -30,7 +33,7 @@ public class Enemy3 : MonoBehaviour
         moveDirection = transform.up * speed;
         rb.velocity = moveDirection;
 
-        if(transform.position.y < -50.0f || transform.position.y > 50.0f)
+        if(transform.position.y < -maxStartDistance || transform.position.y > maxStartDistance)
         {
             Respawn();
         }
@@ -49,7 +52,7 @@ public class Enemy3 : MonoBehaviour
         if(rand > 1.0f)
         {
             float x = Random.Range(-4.0f,4.0f);
-            float y = Random.Range(35.0f,50.0f);
+            float y = Random.Range(minStartDistance,maxStartDistance);
             transform.position = new Vector3(x, y, transform.position.z);
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180f);
             dropPoint.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
@@ -57,7 +60,7 @@ public class Enemy3 : MonoBehaviour
         else
         {
             float x = Random.Range(-4.0f,4.0f);
-            float y = Random.Range(-35.0f,-50.0f);
+            float y = Random.Range(-minStartDistance,-maxStartDistance);
             transform.position = new Vector3(x, y, transform.position.z);
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 0f);
             dropPoint.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);

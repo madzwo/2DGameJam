@@ -2658,10 +2658,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 531490179}
     - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
-      propertyPath: explosive
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5779372829600180092, guid: 53e560a1d68e9457ea8650f291864a1a, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 29020571}
@@ -2743,10 +2739,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8212024466328929307, guid: 850e52338c6e34f7ea44130804bf0869, type: 3}
-      propertyPath: metal
-      value: 
-      objectReference: {fileID: 1994167956331101466, guid: eefa28af16a1e4cc2bb4f674b68b924d, type: 3}
     - target: {fileID: 3863776383822216396, guid: 850e52338c6e34f7ea44130804bf0869, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -2909,10 +2901,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 6884035702658360508, guid: e7aacfc2fe9bc47a9b8b160062ca4b26, type: 3}
-      propertyPath: metal
-      value: 
-      objectReference: {fileID: 1994167956331101466, guid: eefa28af16a1e4cc2bb4f674b68b924d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2926,10 +2914,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1808895022755516511, guid: ed93df92a1b504be3b0bc6fcd9042d9e, type: 3}
-      propertyPath: metal
-      value: 
-      objectReference: {fileID: 1994167956331101466, guid: eefa28af16a1e4cc2bb4f674b68b924d, type: 3}
     - target: {fileID: 4287571670564731343, guid: ed93df92a1b504be3b0bc6fcd9042d9e, type: 3}
       propertyPath: m_Name
       value: Enemy3
