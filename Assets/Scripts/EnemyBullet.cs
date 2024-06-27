@@ -33,7 +33,7 @@ public class EnemyBullet : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         string tagName = collision.gameObject.tag;
-        if(tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "BomberDrone" || tagName == "SuicideDrone" || tagName == "PlayerExplosive" || tagName == "EnemyExplosive")
+        if(tagName == "Player" || tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "BomberDrone" || tagName == "SuicideDrone" || tagName == "PlayerExplosive" || tagName == "EnemyExplosive")
         {
             Explode();
         }

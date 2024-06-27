@@ -15,12 +15,12 @@ public class Enemy4 : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        // player = GameObject.FindGameObjectWithTag("Player");
         Respawn();
     }
 
     void Update()
-    {          
+    {   
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
     }

@@ -28,7 +28,7 @@ public class Enemy5 : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        // player = GameObject.FindGameObjectWithTag("Player");
 
         Respawn();
 

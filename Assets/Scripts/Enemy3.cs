@@ -70,7 +70,7 @@ public class Enemy3 : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         string tagName = collision.gameObject.tag;
-        if(tagName == "PlayerBullet" || tagName == "PlayerMissile" || tagName == "EnemyBullet" || tagName == "Player" || tagName == "BomberDrone")
+        if(tagName == "PlayerBullet" || tagName == "PlayerMissile" || tagName == "EnemyBullet" || tagName == "BomberDrone")
         {
             Explode();
         }

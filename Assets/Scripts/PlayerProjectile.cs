@@ -33,7 +33,7 @@ public class PlayerProjectile : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         string tagName = collision.gameObject.tag;
-        if(tagName == "Explosion" || tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "Drone" || tagName == "Drone2" || tagName == "ArtilleryRover")
+        if(tagName == "Explosion" || tagName == "BomberRover" || tagName == "SuicideRover" || tagName == "BomberDrone" || tagName == "SuicideDrone" || tagName == "ArtilleryRover")
         {
             Explode();
         }
