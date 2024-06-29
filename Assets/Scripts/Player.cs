@@ -69,6 +69,10 @@ public class Player : MonoBehaviour
     public TMP_Text gunUpgradeText;
     public TMP_Text missileUpgradeText;
 
+    public TMP_Text roverCostText;
+    public TMP_Text gunCostText;
+    public TMP_Text missileCostText;
+
     public GameObject roverBoxOne;
     public GameObject roverBoxTwo;
     public GameObject roverBoxThree;
@@ -91,6 +95,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        // build version
+        // moveSpeed = 15.0f;
+
+        //editor verson
+        moveSpeed = 1.0f;
 
         boostSpeed = moveSpeed * 1.5f;
         bulletTimeTillFire = bulletFireRate;
@@ -103,6 +112,10 @@ public class Player : MonoBehaviour
 
         bulletScript = bulletPrefab.GetComponent<Bullet>();
         missileScript = missilePrefab.GetComponent<Missile>();
+
+        roverLevel = 0;
+        gunLevel = 0;
+        missileLevel = 0;
 
     }
 
@@ -265,46 +278,57 @@ public class Player : MonoBehaviour
             clickDistance = Vector2.Distance(mousePosition, roverUpgradeButton.transform.position);
             if (clickDistance <= clickRange)
             {
-                if (roverLevel == 0)
+                if (roverLevel == 0 && metal >= 3)
                 {
+                    metal -= 3;
                     moveSpeed *= 1.5f;
                     boostSpeed = moveSpeed * 1.5f;
                     roverBoxOne.gameObject.SetActive(true);
                     roverUpgradeText.text = "+Turn Speed";
+                    roverCostText.text = "5";
                 }
-                else if (roverLevel == 1)
+                else if (roverLevel == 1 && metal >= 5)
                 {
+                    metal -= 5;
                     turnSpeed *= 1.5f;
                     roverBoxTwo.gameObject.SetActive(true);
                     roverUpgradeText.text = "+Boost Speed";
+                    roverCostText.text = "10";
 
                 }
-                else if (roverLevel == 2)
+                else if (roverLevel == 2 && metal >= 10)
                 {
+                    metal -= 10;
                     boostSpeed *= 1.5f;
                     roverBoxThree.gameObject.SetActive(true);
                     roverUpgradeText.text = "MAX";
-
+                    roverCostText.text = " ";
                 }
                 roverLevel++;
             }
             clickDistance = Vector2.Distance(mousePosition, gunUpgradeButton.transform.position);
             if (clickDistance <= clickRange)
             {
-                if (gunLevel == 0)
+                if (gunLevel == 0 && metal >= 3)
                 {
-                    bulletScript.speed *= 1.5f;
+                    metal -= 3;
+                    roverCostText.text = "5";
+                    bulletScript.upgraded = true;
                     gunBoxOne.gameObject.SetActive(true);
                     gunUpgradeText.text = "+Gun Reload";
                 }
-                else if (gunLevel == 1)
+                else if (gunLevel == 1 && metal >= 5)
                 {
+                    metal -= 5;
+                    roverCostText.text = "10";
                     bulletFireRate *= .5f;
                     gunBoxTwo.gameObject.SetActive(true);
                     gunUpgradeText.text = "++Gun Reload";
                 }
-                else if (gunLevel == 2)
+                else if (gunLevel == 2 && metal >= 10)
                 {
+                    metal -= 10;
+                    roverCostText.text = " ";
                     bulletFireRate *= .5f;
                     gunBoxThree.gameObject.SetActive(true);
                     gunUpgradeText.text = "MAX";
@@ -314,20 +338,26 @@ public class Player : MonoBehaviour
             clickDistance = Vector2.Distance(mousePosition, missileUpgradeButton.transform.position);
             if (clickDistance <= clickRange)
             {
-                if (missileLevel == 0)
+                if (missileLevel == 0 && metal >= 3)
                 {
-                    missileScript.speed *= 1.5f;
+                    metal -= 3;
+                    roverCostText.text = "5";
+                    missileScript.upgraded = true;
                     missileBoxOne.gameObject.SetActive(true);
                     missileUpgradeText.text = "+Missile Reload";
                 }
-                else if (missileLevel == 1)
+                else if (missileLevel == 1&& metal >= 5)
                 {
+                    metal -= 5;
+                    roverCostText.text = "10";
                     missileFireRate *= .5f;
                     missileBoxTwo.gameObject.SetActive(true);
                     missileUpgradeText.text = "++Missile Reload";
                 }
-                else if (missileLevel == 2)
+                else if (missileLevel == 2 && metal >= 10)
                 {
+                    metal -= 10;
+                    roverCostText.text = " ";
                     missileBoxThree.gameObject.SetActive(true);
                     missileUpgradeText.text = "MAX";
                     missileFireRate *= .5f;

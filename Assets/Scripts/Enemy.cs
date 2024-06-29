@@ -54,7 +54,7 @@ public class NewBehaviourScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         string tagName = collision.gameObject.tag;
-        if(tagName == "Explosion" || tagName == "PlayerMissile" || tagName == "Player")
+        if(tagName == "Explosion" || tagName == "PlayerMissile" || tagName == "Player" || tagName == "EnemyExplosive" || tagName == "SuicideRover" || tagName == "ArtilleryRover")
         {
             Debug.Log(collision.gameObject.tag);
             Explode();

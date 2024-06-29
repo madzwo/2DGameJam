@@ -6,6 +6,7 @@ public class Missile : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed;
+    public bool upgraded = false;
 
     public float projectileLife;
     private float timeSinceFire;
@@ -15,7 +16,14 @@ public class Missile : MonoBehaviour
 
     void Start()
     {
-        
+        if (upgraded)
+        {
+            speed = 4.0f;
+        }
+        else
+        {
+            speed = 2.5f;
+        }
     }
 
     void Update()

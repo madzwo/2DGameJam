@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed;
+    public bool upgraded = false;
 
     public float projectileLife;
     private float timeSinceFire;
@@ -15,7 +16,14 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        
+        if (upgraded)
+        {
+            speed = 7.0f;
+        }
+        else
+        {
+            speed = 4.0f;
+        }
     }
 
     void Update()

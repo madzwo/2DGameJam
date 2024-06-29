@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3958268604252702756}
-  speed: 3.5
+  speed: 4
+  upgraded: 0
   projectileLife: 5
   explosion: {fileID: 3198453258203578175, guid: 91d7504068ce7497f9d317fa847a447e, type: 3}

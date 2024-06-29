@@ -377,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3958268604252702756}
   speed: 2.5
+  upgraded: 0
   projectileLife: 3
   explosion: {fileID: 3198453258203578175, guid: d20c06a31c7e6480c9a4a6888f0a4633, type: 3}
 --- !u!198 &2313913276058361164
