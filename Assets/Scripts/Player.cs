@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed;
+    public float boostSpeed;
     public float turnSpeed;
     private bool isMoving;
 
@@ -56,14 +57,53 @@ public class Player : MonoBehaviour
     public TMP_Text metalText;
 
 
+    //upgrades
+    private float clickRange;
+    private float clickDistance;
+
+    public GameObject roverUpgradeButton;
+    public GameObject gunUpgradeButton;
+    public GameObject missileUpgradeButton;
+
+    public TMP_Text roverUpgradeText;
+    public TMP_Text gunUpgradeText;
+    public TMP_Text missileUpgradeText;
+
+    public GameObject roverBoxOne;
+    public GameObject roverBoxTwo;
+    public GameObject roverBoxThree;
+
+    public GameObject gunBoxOne;
+    public GameObject gunBoxTwo;
+    public GameObject gunBoxThree;
+
+    public GameObject missileBoxOne;
+    public GameObject missileBoxTwo;
+    public GameObject missileBoxThree;
+
+    private int roverLevel;
+    private int gunLevel;
+    private int missileLevel;
+
+    public Bullet bulletScript;
+    public Missile missileScript;
+
 
     void Start()
     {
+
+        boostSpeed = moveSpeed * 1.5f;
         bulletTimeTillFire = bulletFireRate;
         missileTimeTillFire = missileFireRate;
 
         maxHealth = 1.0f;
         health = maxHealth;
+
+        clickRange = .5f;
+
+        bulletScript = bulletPrefab.GetComponent<Bullet>();
+        missileScript = missilePrefab.GetComponent<Missile>();
+
     }
 
     void Update()
@@ -78,7 +118,7 @@ public class Player : MonoBehaviour
             float speed = moveSpeed;
             if(Input.GetKey(KeyCode.LeftShift))
             {
-                speed *= 1.5f;
+                speed = boostSpeed;
                 bigJet.Play();
             } 
             else
@@ -146,6 +186,8 @@ public class Player : MonoBehaviour
             }
             missileTimeTillFire -= Time.deltaTime;
         }
+
+        Upgrades();
         
     }
 
@@ -213,5 +255,85 @@ public class Player : MonoBehaviour
 
         metalText.text = "" + metal;
 
+    }
+
+    public void Upgrades()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {   
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            clickDistance = Vector2.Distance(mousePosition, roverUpgradeButton.transform.position);
+            if (clickDistance <= clickRange)
+            {
+                if (roverLevel == 0)
+                {
+                    moveSpeed *= 1.5f;
+                    boostSpeed = moveSpeed * 1.5f;
+                    roverBoxOne.gameObject.SetActive(true);
+                    roverUpgradeText.text = "+Turn Speed";
+                }
+                else if (roverLevel == 1)
+                {
+                    turnSpeed *= 1.5f;
+                    roverBoxTwo.gameObject.SetActive(true);
+                    roverUpgradeText.text = "+Boost Speed";
+
+                }
+                else if (roverLevel == 2)
+                {
+                    boostSpeed *= 1.5f;
+                    roverBoxThree.gameObject.SetActive(true);
+                    roverUpgradeText.text = "MAX";
+
+                }
+                roverLevel++;
+            }
+            clickDistance = Vector2.Distance(mousePosition, gunUpgradeButton.transform.position);
+            if (clickDistance <= clickRange)
+            {
+                if (gunLevel == 0)
+                {
+                    bulletScript.speed *= 1.5f;
+                    gunBoxOne.gameObject.SetActive(true);
+                    gunUpgradeText.text = "+Gun Reload";
+                }
+                else if (gunLevel == 1)
+                {
+                    bulletFireRate *= .5f;
+                    gunBoxTwo.gameObject.SetActive(true);
+                    gunUpgradeText.text = "++Gun Reload";
+                }
+                else if (gunLevel == 2)
+                {
+                    bulletFireRate *= .5f;
+                    gunBoxThree.gameObject.SetActive(true);
+                    gunUpgradeText.text = "MAX";
+                }
+                gunLevel++;
+            }
+            clickDistance = Vector2.Distance(mousePosition, missileUpgradeButton.transform.position);
+            if (clickDistance <= clickRange)
+            {
+                if (missileLevel == 0)
+                {
+                    missileScript.speed *= 1.5f;
+                    missileBoxOne.gameObject.SetActive(true);
+                    missileUpgradeText.text = "+Missile Reload";
+                }
+                else if (missileLevel == 1)
+                {
+                    missileFireRate *= .5f;
+                    missileBoxTwo.gameObject.SetActive(true);
+                    missileUpgradeText.text = "++Missile Reload";
+                }
+                else if (missileLevel == 2)
+                {
+                    missileBoxThree.gameObject.SetActive(true);
+                    missileUpgradeText.text = "MAX";
+                    missileFireRate *= .5f;
+                }
+                missileLevel++;
+            }
+        }
     }
 }
