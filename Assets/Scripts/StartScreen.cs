@@ -58,7 +58,7 @@ public class StartScreen : MonoBehaviour
                 clickDistance = Vector2.Distance(mousePosition, quitButton.transform.position);
                 if (clickDistance <= clickRange)
                 {
-                    Debug.Log("Quit");
+                    Application.Quit();
                 }
             }
         }

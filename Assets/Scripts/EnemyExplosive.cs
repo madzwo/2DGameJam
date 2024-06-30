@@ -30,6 +30,10 @@ public class EnemyExplosive : MonoBehaviour
 
         if(timeTillExplode <= 0)
         {
+            if(transform.position.y > 5.0f || transform.position.y < -5.0f)
+            {
+                Destroy(gameObject);
+            }
             Explode();
         }
         timeTillExplode -= Time.deltaTime;

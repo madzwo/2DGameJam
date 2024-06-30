@@ -96,10 +96,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         // build version
-        // moveSpeed = 15.0f;
+        moveSpeed = 15.0f;
 
-        //editor verson
-        moveSpeed = 1.0f;
+        // editor verson
+        // moveSpeed = 1.0f;
 
         boostSpeed = moveSpeed * 1.5f;
         bulletTimeTillFire = bulletFireRate;
@@ -117,6 +117,8 @@ public class Player : MonoBehaviour
         gunLevel = 0;
         missileLevel = 0;
 
+        bulletScript.upgraded = false;
+        missileScript.upgraded = false;
     }
 
     void Update()
